@@ -35,5 +35,4 @@ jobs:
         with:
           draft: true
           name: ${{github.ref_name}}
-          with:
-            files: ${{ steps.extract.outputs.destination }}
+          files: ${{ steps.extract.outputs.destination }}
