@@ -11,7 +11,7 @@ RUN : "${AGENT_VERSION:?AGENT_VERSION needs to be provided}"
 RUN apt-get update
 RUN apt-get install -y curl binutils zip
 RUN mkdir datadog
-COPY --from=rust-binary /target/x86_64-unknown-linux-gnu/release/process_manager datadog-aas/
+COPY --from=rust-binary /target/x86_64-unknown-linux-gnu/release/process_manager datadog/
 
 # trace agent
 RUN curl -LO https://apt.datadoghq.com/pool/d/da/datadog-agent_${AGENT_VERSION}_amd64.deb
