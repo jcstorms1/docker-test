@@ -6,7 +6,7 @@ on:
       - "v*.*.*"
 
 jobs:
-  create_release:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,14 +23,18 @@ jobs:
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
           tags: datadog-aas:latest
-        outputs: imageid
+    outputs: imageid
 
-      - name: Extract zip file
-        uses: shrink/actions-docker-extract@v2
-        id: extract
-        with:
-          image: ${{ steps.image.outputs.imageid}}
-          path: /datadog-aas.zip
+  create-release:
+    runs-on: ubuntu-latest
+    needs: build-image
+    steps:
+      name: Extract zip file
+      uses: shrink/actions-docker-extract@v2
+      id: extract
+      with:
+        image: ${{ needs.build.outputs.imageid }}
+        path: /datadog-aas.zip
 
       # - name: Release
       #   uses: softprops/action-gh-release@v1
