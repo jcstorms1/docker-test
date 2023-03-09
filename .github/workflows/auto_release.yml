@@ -22,8 +22,8 @@ jobs:
           file: ../../Dockerfile
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
-          repository: datadog-aas
           tags: datadog-aas:latest
+        outputs: imageid
 
       - name: Extract zip file
         uses: shrink/actions-docker-extract@v2
