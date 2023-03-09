@@ -23,7 +23,7 @@ jobs:
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
           tags: datadog-aas:latest
-          outputs: type=local
+          outputs: type=local, dest=.
       - name: PLS
         run: docker images
 
