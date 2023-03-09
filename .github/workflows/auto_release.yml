@@ -22,10 +22,10 @@ jobs:
           file: ../../Dockerfile
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
-          tags: datadog-aas:latest
+          tags: datadog-aas
           load: true
       - name: Extract zip file
-        run: docker cp $(docker create datadog-aas:latest} .
+        run: docker cp $(docker create datadog-aas:/datadog-aas.zip) .
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
