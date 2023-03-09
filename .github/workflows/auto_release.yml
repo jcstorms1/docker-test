@@ -24,11 +24,7 @@ jobs:
           build-args: AGENT_VERSION=7.43.0-1
           tags: datadog-aas:latest
       - name: PLS
-        uses: shrink/actions-docker-extract@v2
-        with:
-          image: datadog-aas:latest
-          path: /datadog-aas.zip
-
+        run: docker images
 
 
   create-release:
