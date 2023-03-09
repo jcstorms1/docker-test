@@ -23,5 +23,5 @@ RUN dpkg -i datadog-dogstatsd_${AGENT_VERSION}_amd64.deb
 RUN mv opt/datadog-dogstatsd/bin/dogstatsd datadog/
 
 # strip binaries and zip folder for release
-RUN strip /datadog-aas/*
+RUN strip /datadog/*
 RUN zip -r /datadog-aas.zip /datadog
