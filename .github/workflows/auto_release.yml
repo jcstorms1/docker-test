@@ -29,7 +29,7 @@ jobs:
         uses: shrink/actions-docker-extract@v2
         id: extract
         with:
-          image: datadog-aas:latest
+          image: ${{ steps.image.outputs.imageid}}
           path: /datadog-aas.zip
 
       # - name: Release
