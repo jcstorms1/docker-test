@@ -19,10 +19,18 @@ jobs:
         uses: docker/build-push-action@v4
         id: image
         with:
+          context: .
           file: ../../Dockerfile
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
           tags: datadog-aas:latest
+      - name: PLS
+        uses: shrink/actions-docker-extract@v2
+        with:
+          image: datadog-aas:latest
+          path: /datadog-aas.zip
+
+
 
   create-release:
     runs-on: ubuntu-latest
