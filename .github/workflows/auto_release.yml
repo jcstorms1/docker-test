@@ -25,14 +25,10 @@ jobs:
           tags: datadog-aas:latest
           load: true
       - name: Extract zip file
-        uses: shrink/actions-docker-extract@v2
-        id: extract
-        with:
-          image: datadog-aas:latest
-          path: /datadog-aas.zip
+        run: docker cp $(docker create datadog-aas:latest} .
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           draft: true
-          name: ${{github.ref_name}}
-          files: ${{ steps.extract.outputs.destination }}
+          name: ${{ github.ref_name }}
+          files: datadog-aas.zip
