@@ -31,4 +31,4 @@ jobs:
         with:
           draft: true
           name: ${{ github.ref_name }}
-          # files: datadog-aas.zip
+          files: datadog-aas.zip
