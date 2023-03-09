@@ -23,12 +23,13 @@ jobs:
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
           repository: datadog-aas
+          tags: datadog-aas:latest
 
       - name: Extract zip file
         uses: shrink/actions-docker-extract@v2
         id: extract
         with:
-          image: datadog-aas
+          image: datadog-aas:latest
           path: /datadog-aas.zip
 
       # - name: Release
