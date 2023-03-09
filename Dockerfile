@@ -17,6 +17,7 @@ COPY --from=rust-binary /target/x86_64-unknown-linux-gnu/release/process_manager
 RUN curl -LO https://apt.datadoghq.com/pool/d/da/datadog-agent_${AGENT_VERSION}_amd64.deb
 RUN dpkg -i datadog-agent_${AGENT_VERSION}_amd64.deb
 RUN mv opt/datadog-agent/embedded/bin/trace-agent datadog/
+
 # dogstatsd
 RUN curl -LO https://apt.datadoghq.com/pool/d/da/datadog-dogstatsd_${AGENT_VERSION}_amd64.deb
 RUN dpkg -i datadog-dogstatsd_${AGENT_VERSION}_amd64.deb
