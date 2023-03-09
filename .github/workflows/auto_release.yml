@@ -23,7 +23,6 @@ jobs:
           platforms: linux/amd64
           build-args: AGENT_VERSION=7.43.0-1
           tags: datadog-aas:latest
-    outputs: imageid
 
   create-release:
     runs-on: ubuntu-latest
