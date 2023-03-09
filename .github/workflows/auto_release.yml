@@ -31,10 +31,10 @@ jobs:
           image: datadog-aas
           path: /datadog-aas.zip
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          draft: true
-          name: ${{github.ref_name}}
-          with:
-            files: ${{ steps.extract.outputs.destination }}
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     draft: true
+      #     name: ${{github.ref_name}}
+      #     with:
+      #       files: ${{ steps.extract.outputs.destination }}
