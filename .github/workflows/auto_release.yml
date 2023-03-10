@@ -27,7 +27,7 @@ jobs:
           tags: datadog-aas
           load: true
       - name: Extract zip file
-        run: docker cp $(docker create datadog-aas):/datadog-aas.zip .
+        run: docker cp $(docker create datadog-aas):/datadog-aas-${{ github.ref_name }}.zip .
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
