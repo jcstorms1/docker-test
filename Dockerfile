@@ -1,7 +1,8 @@
 # Build process manager
 FROM rust:latest as rust-binary
 COPY /process_manager/ .
-RUN cargo build --release --target=x86_64-unknown-linux-gnu
+RUN rustup target add x86_64-unknown-linux-musl
+RUN cargo build --release --target=x86_64-unknown-linux-musl
 
 FROM ubuntu:latest as agent
 # We extract the trace-agent from the agent and use a matching dogstatsd version
@@ -12,7 +13,7 @@ RUN : "${AGENT_VERSION:?AGENT_VERSION needs to be provided}"
 RUN apt-get update
 RUN apt-get install -y curl binutils zip
 RUN mkdir ${RELEASE_VERSION}
-COPY --from=rust-binary /target/x86_64-unknown-linux-gnu/release/process_manager ${RELEASE_VERSION}/
+COPY --from=rust-binary /target/x86_64-unknown-linux-musl/release/process_manager ${RELEASE_VERSION}/
 
 # trace agent
 RUN curl -LO https://apt.datadoghq.com/pool/d/da/datadog-agent_${AGENT_VERSION}_amd64.deb
